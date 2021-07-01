@@ -1,0 +1,44 @@
+[![Crates.io](https://img.shields.io/crates/v/captur.svg)](https://crates.io/crates/captur)
+[![docs](https://docs.rs/captur/badge.svg)](https://docs.rs/captur/)
+[![GitHub license](https://img.shields.io/github/license/MitMaro/http-request-header)](https://raw.githubusercontent.com/MitMaro/captur/master/LICENSE)
+
+# Captur
+
+Starting in Rust 2021, Rust will no longer capture whole structs and instead will only capture a disjoint set of the fields used in a closure. In some cases, it is necessary to capture the structs to retain a particular drop order. This macro will capture the struct within the closure, ensuring the correct drop order.
+
+## The Fix
+
+The typical fix to this problem is to create an unused reference to the struct.
+
+```rust
+let some_struct = SomeStruct::new();
+let result = || {
+    // capture some_struct within the closure
+    let _ = &some_struct;
+    println!("{}", some_struct.y);
+}
+```
+
+While this is trivial to implement in closures where capturing is required, without a comment it, the meaning of the unused line is difficult to determine. This macro provides a self documenting and potentially more concise way to capture the structs. 
+
+## Installation and Usage
+
+```toml
+[dependencies]
+captur = "0.1"
+```
+
+```rust
+use captur::capture;
+
+fn send_event_and_action(action: &Action, event: Event) {
+    send(|sender| {
+        capture!(action, event);
+        sender.send(action.name.as_str(), event.code);
+    });
+}
+```
+
+## License
+
+Captur is released under the ISC license. See [LICENSE](LICENSE).
