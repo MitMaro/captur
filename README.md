@@ -1,6 +1,6 @@
 [![Crates.io](https://img.shields.io/crates/v/captur.svg)](https://crates.io/crates/captur)
 [![docs](https://docs.rs/captur/badge.svg)](https://docs.rs/captur/)
-[![GitHub license](https://img.shields.io/github/license/MitMaro/http-request-header)](https://raw.githubusercontent.com/MitMaro/captur/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/MitMaro/captur)](https://raw.githubusercontent.com/MitMaro/captur/master/LICENSE)
 
 # Captur
 
