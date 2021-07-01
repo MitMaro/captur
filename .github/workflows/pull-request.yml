@@ -1,0 +1,46 @@
+name: Pull Request
+
+on: [pull_request]
+
+jobs:
+    test:
+        strategy:
+            matrix:
+                version: ['stable', 'nightly']
+        runs-on: [ubuntu-latest]
+        timeout-minutes: 5
+        steps:
+            - uses: actions/checkout@v2
+            - name: Install latest Rust
+              uses: actions-rs/toolchain@v1
+              with:
+                  toolchain: stable
+                  profile: minimal
+                  override: true
+            - name: Test
+              run: cargo test
+            - name: Build
+              run: cargo build --release
+
+    lint:
+        runs-on: [ubuntu-latest]
+        timeout-minutes: 5
+        steps:
+            - uses: actions/checkout@v2
+            - name: Install latest Rust
+              uses: actions-rs/toolchain@v1
+              with:
+                  toolchain: stable
+                  profile: minimal
+                  override: true
+            - name: Install latest nightly Rust
+              uses: actions-rs/toolchain@v1
+              with:
+                  toolchain: nightly
+                  profile: minimal
+            - name: Lint
+              run: "./scripts/lint.bash"
+            - name: Docs
+              run: "./scripts/docs.bash"
+            - name: Format
+              run: "./scripts/format.bash"
