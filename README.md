@@ -19,7 +19,7 @@ let result = || {
 }
 ```
 
-While this is trivial to implement in closures where capturing is required, without a comment it, the meaning of the unused line is difficult to determine. This macro provides a self documenting and potentially more concise way to capture the structs. 
+While this is trivial to implement in closures where capturing is required, without a comment, the meaning of the unused line is difficult to determine. This macro provides a self documenting and potentially more concise way to capture the structs.
 
 ## Installation and Usage
 
