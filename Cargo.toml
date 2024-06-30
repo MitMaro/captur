@@ -16,7 +16,7 @@ include = [
 	"/LICENSE",
 	"/README.md"
 ]
-edition = "2018"
+edition = "2021"
 
 [lib]
 name = "captur"
