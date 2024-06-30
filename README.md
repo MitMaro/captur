@@ -25,7 +25,7 @@ While this is trivial to implement in closures where capturing is required, with
 
 ```toml
 [dependencies]
-captur = "0.1"
+captur = "1"
 ```
 
 ```rust
@@ -41,7 +41,7 @@ fn send_event_and_action(action: &Action, event: Event) {
 
 # Supported Rust Versions
 
-This project will support all Rust versions since 1.51, when Rust first supported Rust 2021.
+This project will support all Rust versions since 1.51 when Rust first supported Rust 2021.
 
 Dropping support for a Rust version will result in a major version bump, following [Semantic Versioning](https://semver.org/).
 
