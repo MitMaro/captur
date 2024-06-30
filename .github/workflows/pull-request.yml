@@ -10,7 +10,8 @@ jobs:
         runs-on: [ubuntu-latest]
         timeout-minutes: 5
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
+            - uses: Swatinem/rust-cache@v2
             - name: Install Rust
               uses: actions-rs/toolchain@v1
               with:
@@ -21,20 +22,37 @@ jobs:
               run: cargo test
             - name: Build
               run: cargo build --release
-
     lint:
-        runs-on: [ubuntu-latest]
-        timeout-minutes: 5
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
         steps:
-            - uses: actions/checkout@v2
-            - name: Install latest nightly Rust
-              uses: actions-rs/toolchain@v1
+            - uses: actions/checkout@v3
+            - uses: dtolnay/rust-toolchain@stable
+              with:
+                  components: clippy
+            - uses: Swatinem/rust-cache@v2
+            - uses: baptiste0928/cargo-install@v2
+              with:
+                  crate: cargo-make
+            - run: cargo clippy --all-targets --all-features -- --deny warnings
+    docs:
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v3
+            - uses: dtolnay/rust-toolchain@stable
+            - run: cargo doc
+    format:
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - uses: actions/checkout@v3
+            - uses: dtolnay/rust-toolchain@master
               with:
                   toolchain: nightly
-                  profile: minimal
-            - name: Lint
-              run: "./scripts/lint.bash"
-            - name: Docs
-              run: "./scripts/docs.bash"
-            - name: Format
-              run: "./scripts/format.bash"
+                  components: rustfmt
+            - uses: Swatinem/rust-cache@v2
+            - uses: baptiste0928/cargo-install@v2
+              with:
+                  crate: cargo-make
+            - run: cargo make format
