@@ -6,15 +6,15 @@ jobs:
     test:
         strategy:
             matrix:
-                version: ['stable', 'nightly']
+                version: ['1.56.0', 'stable', 'nightly']
         runs-on: [ubuntu-latest]
         timeout-minutes: 5
         steps:
             - uses: actions/checkout@v2
-            - name: Install latest Rust
+            - name: Install Rust
               uses: actions-rs/toolchain@v1
               with:
-                  toolchain: stable
+                  toolchain: ${{ matrix.version }}
                   profile: minimal
                   override: true
             - name: Test
@@ -27,12 +27,6 @@ jobs:
         timeout-minutes: 5
         steps:
             - uses: actions/checkout@v2
-            - name: Install latest Rust
-              uses: actions-rs/toolchain@v1
-              with:
-                  toolchain: stable
-                  profile: minimal
-                  override: true
             - name: Install latest nightly Rust
               uses: actions-rs/toolchain@v1
               with:
