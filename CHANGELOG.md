@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.0.1] - 2024-07-21
 ### Fixed
 - Correct the minimum supported Rust version to match Rust 2021 ([#13](https://github.com/MitMaro/captur/pull/13))
 
@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 - Initial project release
 
-[Unreleased]: https://github.com/MitMaro/captur/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/MitMaro/captur/compare/1.0.1...HEAD
+[1.0.1]: https://github.com/MitMaro/captur/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/MitMaro/captur/compare/0.1.0...1.0.0
 [0.1.0]: https://github.com/MitMaro/captur/commit/e63285301746be5f3545e646a087ee54ca83f98e
