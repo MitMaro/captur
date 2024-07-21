@@ -5,7 +5,7 @@ authors = ["Tim Oram <dev@mitmaro.ca>"]
 description = "Macro to capture whole structs from disjoint fields in a closure."
 repository = "https://github.com/MitMaro/captur"
 documentation = "https://docs.rs/captur/"
-keywords = [ "macro", "capture", "struct" ]
+keywords = ["macro", "capture", "struct"]
 categories = ["rust-patterns"]
 readme = "README.md"
 license = "ISC"
@@ -17,6 +17,7 @@ include = [
 	"/README.md"
 ]
 edition = "2021"
+rust-version = "1.56.0"
 
 [lib]
 name = "captur"
