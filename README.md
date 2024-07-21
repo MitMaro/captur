@@ -41,7 +41,7 @@ fn send_event_and_action(action: &Action, event: Event) {
 
 # Supported Rust Versions
 
-This project will support all Rust versions since 1.51 when Rust first supported Rust 2021.
+This project will support Rust versions since 1.56.0, the first release of Rust 2021.
 
 Dropping support for a Rust version will result in a major version bump, following [Semantic Versioning](https://semver.org/).
 
