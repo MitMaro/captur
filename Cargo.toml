@@ -1,6 +1,6 @@
 [package]
 name = "captur"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["Tim Oram <dev@mitmaro.ca>"]
 description = "Macro to capture whole structs from disjoint fields in a closure."
 repository = "https://github.com/MitMaro/captur"
